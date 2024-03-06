@@ -1,0 +1,147 @@
+/* estilos.css */
+body {
+    font-family: Arial, sans-serif;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo img {
+    height: 50px; /* Ajusta esto según el tamaño de tu logo */
+}
+
+.menu ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.user-options {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-options button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.user-options a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.container {
+    display: flex;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 20px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+}
+
+.content {
+    flex-grow: 1;
+    padding: 20px;
+}
+
+.content section {
+    margin-bottom: 20px;
+}
+
+/* Esta Es la parte de la pagina de registro */
+
+.Nombre-App{
+    text-align: center;
+    position: relative;
+    right: 70px;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Arial, sans-serif;
+    background-color: #156baa;
+    color: white;
+    padding: 10px 30px;
+
+}
+
+.Contenedor-Registro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #f0f0f0;
+}
+
+.form-registro{
+    display: flex;
+    position: relative;
+    Align-items: center;
+
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+}
+
+.input {
+    position: relative;
+    top: 1em;
+    left: 3em;
+    height: 100%;
+    width: 100%;
+
+    border-color: transparent transparent #156baa transparent;
+
+    border-width: 5px;
+    font-size: 16px;
+    padding: 1em 2em;
+    margin: 2em;
+    outline: none;
+    background: white;
+    z-index: 1;
+}
+
+/* Hide the placeholder texts (a) */
+
+::placeholder {
+    color: transparent;
+}
+
+/* Para mejorar la visualización en dispositivos móviles */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+    }
+}
