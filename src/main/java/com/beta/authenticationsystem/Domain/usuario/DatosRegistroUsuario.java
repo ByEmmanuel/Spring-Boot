@@ -20,8 +20,10 @@ public record DatosRegistroUsuario(
         @NotBlank
         String telefono,
         @NotBlank
-        @Pattern(regexp = "\\d{4,6}")
-        String documento,
+        //6 para que sean 7 por prueba
+
+        String tarjetaDeCredito,
+
         @NotNull
                 /*
                 *

@@ -5,15 +5,14 @@ import com.beta.authenticationsystem.Domain.direccion.Direccion;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 
 @Table(name = "usuarios")
 @Entity(name = "Usuario")
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -21,13 +20,12 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private long id;
     private String nombre;
     private String apellido;
     private String email;
     private String telefono;
-    private String TarjetaDeCredito;
+    private String tarjetaDeCredito;
     private Boolean activo;
     @Enumerated(EnumType.STRING)
     private  Especialidad especialidad;
@@ -39,13 +37,15 @@ public class Usuario {
         this.nombre = datosRegistroUsuario.nombre();
         this.apellido = datosRegistroUsuario.apellido();
         this.email = datosRegistroUsuario.email();
-        this.TarjetaDeCredito = datosRegistroUsuario.documento();
         this.telefono = datosRegistroUsuario.telefono();
+        this.tarjetaDeCredito = datosRegistroUsuario.tarjetaDeCredito();
         this.especialidad = datosRegistroUsuario.especialidad();
         this.direccion =  new Direccion(datosRegistroUsuario.direccion()) ;
     }
-//
-//    public void actualizarDatos(DatosActualizarMedico datosActualizarMedico) {
+
+
+    //
+//    public void  actualizarDatos(DatosActualizarMedico datosActualizarMedico) {
 //        if(datosActualizarMedico.nombre() != null){
 //            this.nombre = datosActualizarMedico.nombre();
 //        }

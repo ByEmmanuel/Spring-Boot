@@ -43,10 +43,11 @@
     <section id="apartado1">
         <nav>
             <div class="Contenedor-Registro">
-                <h2 style="
+                <h2 id="Texto-Bienvenida" style="
                     text-align: center;
                     margin-top: 50px;
                     position: relative;
+                    right: 15%;
                     font-size: 300%;
                     color: #0f0f0f;
                     font-family: 'Arial' , 'sans-serif';
@@ -55,20 +56,59 @@
                     Bienvenido!
                 </h2>
                 <form action="Registro.html" method="post">
-                    <div class="form-registro">
+                    <div class="form-registro"  id="myForm">
 
                         <br>
-                        <label for="Nombre" style="font-size: 2em; color: #04417c; position: relative; left: 15%" class="label">Nombre(s)</label>
+                        <label for="Nombre" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Nombre(s)</label>
                         <input type="text" id="Nombre" name="Nombre" required class="input">
                         <br>
                         <button type="submit" id="Siguiente-boton" class="Boton-Continuar">Continuar</button>
 
                     </div>
+
+                    <div class="form-registro hidden" id="apellidoSection">
+                        <br>
+                        <label for="Apellido" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Apellido(s)</label>
+                        <input type="text" id="Apellido" name="Apellido" required class="input">
+                        <br>
+                        <button type="button" id="Siguiente-boton2" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="emailSection">
+                        <br>
+                        <label for="Email" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Email</label>
+                        <input type="text" id="Email" name="Email" required class="input">
+                        <br>
+                        <button type="button" id="Siguiente-boton3" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="passwordSection">
+                        <br>
+                        <label for="password" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Contraseña</label>
+                        <input type="text" id="password" name="password" required class="input">
+                        <br>
+                        <button type="button" id="Siguiente-boton4" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="direccionSection">
+                        <br>
+                        <label for="calle" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Ingrese su direccion</label>
+                        <input type="text" id="calle" name="calle" required class="input-direccion" placeholder="Calle">
+                        <label for="direccion" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label"></label>
+                        <input type="text" id="direccion" name="direccion" required class="input-direccion"  placeholder="Numero Ext / int">
+
+                        <button type="button" id="Siguiente-boton5" class="Boton-Continuar">Continuar</button>
+                    </div>
+
                 </form>
+                <div class="additional-component hidden" id="additionalComponent">
+                    <!-- Componente adicional estilo Microsoft -->
+                    <p>¡Formulario enviado con éxito!</p>
+                </div>
             </div>
         </nav>
 
     </section>
-
+    <script src="index.js"></script>
 </body>
 </html>

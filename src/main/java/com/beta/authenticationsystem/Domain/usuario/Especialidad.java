@@ -14,7 +14,7 @@ public enum Especialidad {
     Cirujano,
     Pediatra,
     Ginecologo,
-    Medico,
+    Medico
 
 }
 

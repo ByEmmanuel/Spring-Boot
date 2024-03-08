@@ -101,19 +101,47 @@ body {
 }
 
 .form-registro{
+    width: 100%;
     display: flex;
-    position: relative;
+    justify-content: center;
     Align-items: center;
 
     flex-direction: column;
     gap: 20px;
     padding: 20px;
+    transition: transform 0.4s ease; /* Agregamos una transición para suavizar el desplazamiento */
 }
 
-.input {
+
+
+.form-registro.left {
+    transform: translateX(-300%);
+}
+
+/*
+.additional-component {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+*/
+.hidden {
+    display: none;
+}
+
+
+.visible {
+    display: block;
+}
+
+.input , .input-direccion{
     position: relative;
     top: 1em;
-    left: 3em;
+    right: 4em;
     height: 100%;
     width: 100%;
 
@@ -132,6 +160,42 @@ body {
 
 ::placeholder {
     color: transparent;
+}
+
+.Boton-Continuar{
+    position: relative;
+    top: 1em;
+    right: 4em;
+    background-color: #156baa;
+    color: white;
+    border: none;
+    padding: 1em 2em;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+/* */
+
+.Contenedor-Registro {
+    text-align: center;
+}
+/*
+.additional-component {
+    display: none;
+    margin-top: 20px;
+}
+
+.additional-component.active {
+    display: block;
+}*/
+
+.hidden {
+    display: none;
+}
+
+.input-direccion::placeholder {
+    color: #999;
 }
 
 /* Para mejorar la visualización en dispositivos móviles */
