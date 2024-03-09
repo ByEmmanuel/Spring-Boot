@@ -52,7 +52,19 @@ document.getElementById('Siguiente-boton4').addEventListener('click', function(e
     document.getElementById('passwordSection').classList.add('left');
     setTimeout(function() {
         document.getElementById('passwordSection').classList.add('hidden');
-        document.getElementById('direccionSection').classList.remove('hidden');
+        document.getElementById('direccionSection1').classList.remove('hidden');
     }, 400); // Ajusta el tiempo según la duración de la animación en CSS
     document.getElementById('Texto-Bienvenida').classList.add('hidden');
+});
+
+document.getElementById('Siguiente-boton5').addEventListener('click', function(event) {
+    event.preventDefault(); // Evitar el comportamiento predeterminado del botón
+
+    // Ocultar sección actual y mostrar siguiente sección
+
+    document.getElementById('direccionSection1').classList.add('left');
+    setTimeout(function() {
+        document.getElementById('direccionSection1').classList.add('hidden');
+        document.getElementById('direccionSection2').classList.remove('hidden');
+    }, 400); // Ajusta el tiempo según la duración de la animación en CSS
 });

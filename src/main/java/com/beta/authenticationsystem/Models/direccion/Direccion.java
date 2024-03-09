@@ -1,17 +1,30 @@
-package com.beta.authenticationsystem.Domain.direccion;
+package com.beta.authenticationsystem.Models.direccion;
 
 
-import jakarta.persistence.Embeddable;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.beta.authenticationsystem.Models.usuario.Usuario;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Embeddable
+@Table(name = "datos_Direccion")
+@Entity(name = "Direccion")
+
+
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Direccion {
 
+public class Direccion extends Usuario {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(updatable = false, insertable = false)
+    public Long id;
+
+    @JoinColumn(name = "id_cliente")  // Cambiado de "usuario" a "usuario_id"
+    @OneToOne
+    private Usuario usuario;
 
     private String calle;
     private String numero;
@@ -21,7 +34,7 @@ public class Direccion {
     private String pais;
     private String complemento;
 
-    public Direccion(DatosDireccion direccion) {
+    public Direccion(RegistroDatosDireccion direccion) {
         this.calle = direccion.calle();
         this.numero = direccion.numero();
         this.colonia = direccion.colonia();
@@ -31,7 +44,7 @@ public class Direccion {
         this.complemento = direccion.complemento();
     }
 
-    public Direccion actualizarDatos(DatosDireccion direccion) {
+    public Direccion actualizarDatos(RegistroDatosDireccion direccion) {
         this.calle = direccion.calle();
         this.numero = direccion.numero();
         this.colonia = direccion.colonia();
@@ -41,6 +54,14 @@ public class Direccion {
         this.complemento = direccion.complemento();
 
         return this;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getId() {
+        return id;
     }
 }
 

@@ -1,7 +1,13 @@
 package com.beta.authenticationsystem.Controllers;
 
-import com.beta.authenticationsystem.Domain.direccion.DatosDireccion;
-import com.beta.authenticationsystem.Domain.usuario.*;
+import com.beta.authenticationsystem.Models.DatosBancarios.Bancario;
+import com.beta.authenticationsystem.Models.DatosBancarios.RegistroDatosBancarios;
+import com.beta.authenticationsystem.Models.direccion.Direccion;
+import com.beta.authenticationsystem.Models.direccion.RegistroDatosDireccion;
+import com.beta.authenticationsystem.Models.usuario.*;
+import com.beta.authenticationsystem.Repository.BancariosRepository;
+import com.beta.authenticationsystem.Repository.DireccionRepository;
+import com.beta.authenticationsystem.Repository.UsuarioRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,43 +23,46 @@ import java.util.Optional;
 
 //@SpringBootApplication
 @RestController
-@RequestMapping("/api/usuarios/registro")
+@RequestMapping("/api/usuarios")
 public class RegistroUsuarioController {
 
 
     //no recomendable para fines de testing
     @Autowired
     /*
-     * @Autowired: Esta anotación inyecta la instancia de MedicoRepository en este controlador.
-     * MedicoRepository es una interfaz de Spring Data JPA que proporciona métodos para interactuar
-     * con la base de datos relacionada con la entidad (Medico).
+     * @Autowired: Esta anotación inyecta la instancia de UsuarioRepository en este controlador.
+     * UsuarioRepository es una interfaz de Spring Data JPA que proporciona métodos para interactuar
+     * con la base de datos relacionada con la entidad (Usuario).
      */
 
     private UsuarioRepository usuarioRepository;
 
     /*
      * @PostMapping: Esta anotación indica que este método manejará solicitudes HTTP POST a la ruta "/medicos".
-     *  public ResponseEntity<DatosRespuestaMedico> registrarMedico(...): Este método maneja la solicitud POST y devuelve un ResponseEntity que encapsula los datos de respuesta del servidor y el código de estado HTTP.
-     *   @RequestBody @Valid DatosRegistroMedico datosRegistroMedico: Esta anotación indica que el cuerpo de la solicitud HTTP se mapeará al parámetro datosRegistroMedico. La anotación @Valid se utiliza para validar automáticamente el objeto datosRegistroMedico según las restricciones de validación especificadas en la clase DatosRegistroMedico.
+     *  public ResponseEntity<DatosRespuestaUsuario> registraUsuario(...): Este método maneja la solicitud POST y devuelve un ResponseEntity que encapsula los datos de respuesta del servidor y el código de estado HTTP.
+     *   @RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario: Esta anotación indica que el cuerpo de la solicitud HTTP se mapeará al parámetro datosRegistroUsuario. La anotación @Valid se utiliza para validar automáticamente el objeto datosRegistroUsuario según las restricciones de validación especificadas en la clase DatosRegistroUsuario..
      */
-    @PostMapping
-    public ResponseEntity<DatosRespuestaUsuario> registrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario,
-                                                                 UriComponentsBuilder uriComponentsBuilder){
+    @PostMapping("/registroDatosPersonales")
+    public ResponseEntity<DatosRespuestaUsuario> registrarUsuario(@RequestBody @Valid RegistroDatosPersonalesUsuario registroDatosPersonalesUsuario,
+                                                                  UriComponentsBuilder uriComponentsBuilder){
         /*
          *   medicoRepository.save(...): Este método guarda un nuevo objeto Usuario en la base de datos utilizando el UsuarioRepository.
          *   El objeto Usuario se crea a partir de los datos proporcionados en el objeto datosRegistroUsuario.
          */
-        Usuario usuario = usuarioRepository.save(new Usuario (datosRegistroUsuario));
+        Usuario usuario = usuarioRepository.save(new Usuario (registroDatosPersonalesUsuario));
 
         /*
          * Aquí se crea un objeto DatosRespuestaMedico utilizando los datos del objeto Medico guardado en la base de datos.
          * DatosRespuestaMedico es una clase que encapsula la información que deseas devolver como respuesta a la solicitud POST.
          */
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario.getId(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(),
-                usuario.getTelefono(),usuario.getEspecialidad().toString(),
-                new DatosDireccion(usuario.getDireccion().getCalle(),usuario.getDireccion().getNumero(),
-                        usuario.getDireccion().getColonia(),usuario.getDireccion().getCiudad(),
-                        usuario.getDireccion().getEstado(),usuario.getDireccion().getPais(),usuario.getDireccion().getComplemento()));
+                usuario.getTelefono(),usuario.getEspecialidad().toString()
+
+//                new DatosDireccion(usuario.getDireccion().getCalle(),usuario.getDireccion().getNumero(),
+//                        usuario.getDireccion().getColonia(),usuario.getDireccion().getCiudad(),
+//                        usuario.getDireccion().getEstado(),usuario.getDireccion().getPais(),usuario.getDireccion().getComplemento()
+    //                )
+        );
 
 
 
@@ -81,10 +90,93 @@ public class RegistroUsuarioController {
 //
 //    }
 
+    @Autowired
+    private DireccionRepository direccionRepository;
+    @PostMapping("/registroDatosFacturacion")
+    public ResponseEntity<DatosRespuestaUsuario> registrarUsuario(@RequestBody @Valid RegistroDatosDireccion registroDatosDireccionUsuario,
+                                                                  UriComponentsBuilder uriComponentsBuilder){
+        /*
+         *   medicoRepository.save(...): Este método guarda un nuevo objeto Usuario en la base de datos utilizando el UsuarioRepository.
+         *   El objeto Usuario se crea a partir de los datos proporcionados en el objeto datosRegistroUsuario.
+         */
+        Direccion usuarioDireccion = direccionRepository.save(new Direccion (registroDatosDireccionUsuario));
+
+        /*
+         * Aquí se crea un objeto DatosRespuestaMedico utilizando los datos del objeto Medico guardado en la base de datos.
+         * DatosRespuestaMedico es una clase que encapsula la información que deseas devolver como respuesta a la solicitud POST.
+         */
+        DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(
+                new RegistroDatosDireccion(
+                        usuarioDireccion.getCalle(),
+                        usuarioDireccion.getNumero(),
+                        usuarioDireccion.getColonia(),
+                        usuarioDireccion.getCiudad(),
+                        usuarioDireccion.getEstado(),
+                        usuarioDireccion.getPais(),
+                        usuarioDireccion.getComplemento()
+                )
+        );
+
+
+
+        /*
+         * Se construye la URL del recurso recién creado (/direccion/{id}) y se devuelve en el encabezado Location de la respuesta.
+         * Además, se crea una instancia de ResponseEntity con el código de estado 201 (CREATED) y el cuerpo de la respuesta contiene los datos del médico registrado.
+         */
+        URI url = uriComponentsBuilder.path("/direccion/{id}").buildAndExpand(usuarioDireccion.getId()).toUri();
+        return ResponseEntity.created(url).body(datosRespuestaUsuario);
+        // Return 201 Created
+        // URL donde encontrar al medico
+        // GET http://direccionurldemiapi/usuarios/xx
+    }
+
+    @Autowired
+    private BancariosRepository bancarioRepository;
+    @PostMapping("/registroDatosBancarios")
+    public ResponseEntity<DatosRespuestaUsuario> registrarUsuario(@RequestBody @Valid RegistroDatosBancarios registroDatosBancariosUsuario,
+                                                                  UriComponentsBuilder uriComponentsBuilder){
+        /*
+         *   medicoRepository.save(...): Este método guarda un nuevo objeto Usuario en la base de datos utilizando el UsuarioRepository.
+         *   El objeto Usuario se crea a partir de los datos proporcionados en el objeto datosRegistroUsuario.
+         */
+        Bancario usuarioDatosBancarios = bancarioRepository.save(new Bancario(registroDatosBancariosUsuario));
+
+        /*
+         * Aquí se crea un objeto DatosRespuestaMedico utilizando los datos del objeto Medico guardado en la base de datos.
+         * DatosRespuestaMedico es una clase que encapsula la información que deseas devolver como respuesta a la solicitud POST.
+         */
+        DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(
+                new RegistroDatosBancarios(
+                        usuarioDatosBancarios.getNombre(),
+                        usuarioDatosBancarios.getBanco(),
+                        usuarioDatosBancarios.getTipoDeCuenta(),
+                        usuarioDatosBancarios.getNumeroDeTarjeta(),
+                        usuarioDatosBancarios.getFechaDeExpiracion(),
+                        usuarioDatosBancarios.getCvv()
+
+
+                )
+        );
+
+
+
+        /*
+         * Se construye la URL del recurso recién creado (/DatosBancarios/{id}) y se devuelve en el encabezado Location de la respuesta.
+         * Además, se crea una instancia de ResponseEntity con el código de estado 201 (CREATED) y el cuerpo de la respuesta contiene los datos del médico registrado.
+         *
+         * TENGO QUE ACLARAR QUE LOS DATOS BANCARIOS NO SE DEBEN DE DEVOLVER EN EL CUERPO DE LA RESPUESTA
+         * POR ENDE TENDRE QUE MODIFICAR ESTO PARA QUE LOS USUARIOS (FINALES) NO PUEDAN VER LOS DATOS BANCARIOS DE OTROS USUARIOS
+         */
+        URI url = uriComponentsBuilder.path("/DatosBancarios/{id}").buildAndExpand(usuarioDatosBancarios.getId()).toUri();
+        return ResponseEntity.created(url).body(datosRespuestaUsuario);
+        // Return 201 Created
+        // URL donde encontrar al medico
+        // GET http://direccionurldemiapi/usuarios/xx
+    }
     @GetMapping
-    public ResponseEntity<Page<DatosListadoUsuario>> listadoUsuarios(@PageableDefault(size = 2) Pageable paginacion){
+    public ResponseEntity<Page<ListadoDatosPersonalesUsuario>> listadoUsuarios(@PageableDefault(size = 2) Pageable paginacion){
         // return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
-        return ResponseEntity.ok(usuarioRepository.findByActivoTrue(paginacion).map(DatosListadoUsuario::new));
+        return ResponseEntity.ok(usuarioRepository.findByActivoTrue(paginacion).map(ListadoDatosPersonalesUsuario::new));
     }
 
     // Endpoint para obtener un usuario por su ID
@@ -102,15 +194,15 @@ public class RegistroUsuarioController {
                     usuario.getApellido(),
                     usuario.getEmail(),
                     usuario.getTelefono(),
-                    usuario.getEspecialidad().toString(),
-                        new DatosDireccion(usuario.getDireccion().getCalle(),
-                                usuario.getDireccion().getNumero(),
-                                usuario.getDireccion().getColonia(),
-                                usuario.getDireccion().getCiudad(),
-                                usuario.getDireccion().getEstado(),
-                                usuario.getDireccion().getPais(),
-                                usuario.getDireccion().getComplemento()
-                        )
+                    usuario.getEspecialidad().toString()
+//                        new DatosDireccion(usuario.getDireccion().getCalle(),
+//                                usuario.getDireccion().getNumero(),
+//                                usuario.getDireccion().getColonia(),
+//                                usuario.getDireccion().getCiudad(),
+//                                usuario.getDireccion().getEstado(),
+//                                usuario.getDireccion().getPais(),
+//                                usuario.getDireccion().getComplemento()
+//                        )
             );
             if (usuario.getActivo()) {
                 // Retorna el usuario encontrado con código 200 OK

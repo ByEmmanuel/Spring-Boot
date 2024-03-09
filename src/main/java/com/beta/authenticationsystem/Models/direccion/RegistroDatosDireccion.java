@@ -1,8 +1,8 @@
-package com.beta.authenticationsystem.Domain.direccion;
+package com.beta.authenticationsystem.Models.direccion;
 
 import jakarta.validation.constraints.NotBlank;
 
-public record DatosDireccion(
+public record RegistroDatosDireccion(
         @NotBlank
         String calle,
         @NotBlank

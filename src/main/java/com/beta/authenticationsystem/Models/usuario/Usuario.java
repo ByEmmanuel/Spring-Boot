@@ -1,11 +1,14 @@
-package com.beta.authenticationsystem.Domain.usuario;
+package com.beta.authenticationsystem.Models.usuario;
 
 
-import com.beta.authenticationsystem.Domain.direccion.Direccion;
+import com.beta.authenticationsystem.Models.DatosBancarios.Bancario;
+import com.beta.authenticationsystem.Models.direccion.Direccion;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.List;
 
 
 @Table(name = "usuarios")
@@ -20,27 +23,39 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    @Column(updatable = false, insertable = false)
+    public Long id;
+
+    @OneToOne(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private Direccion direccion;
+
+    @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+    private List<Bancario> cuentas;
+
     private String nombre;
     private String apellido;
     private String email;
+    private String contraseña;
     private String telefono;
-    private String tarjetaDeCredito;
+    //private String tarjetaDeCredito;
     private Boolean activo;
     @Enumerated(EnumType.STRING)
     private  Especialidad especialidad;
-    @Embedded
-    private Direccion direccion;
 
-    public Usuario(DatosRegistroUsuario datosRegistroUsuario) {
+
+//    @Embedded
+//    private Direccion direccion;
+
+    public Usuario(RegistroDatosPersonalesUsuario datosRegistroUsuario) {
         this.activo = true;
         this.nombre = datosRegistroUsuario.nombre();
         this.apellido = datosRegistroUsuario.apellido();
         this.email = datosRegistroUsuario.email();
         this.telefono = datosRegistroUsuario.telefono();
-        this.tarjetaDeCredito = datosRegistroUsuario.tarjetaDeCredito();
+        this.contraseña = datosRegistroUsuario.contraseña();
+        //this.tarjetaDeCredito = datosRegistroUsuario.tarjetaDeCredito();
         this.especialidad = datosRegistroUsuario.especialidad();
-        this.direccion =  new Direccion(datosRegistroUsuario.direccion()) ;
+        //this.direccion =  new Direccion(datosRegistroUsuario.direccion()) ;
     }
 
 
