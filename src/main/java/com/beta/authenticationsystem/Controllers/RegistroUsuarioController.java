@@ -70,7 +70,7 @@ public class RegistroUsuarioController {
          * Se construye la URL del recurso recién creado (/usuarios/{id}) y se devuelve en el encabezado Location de la respuesta.
          * Además, se crea una instancia de ResponseEntity con el código de estado 201 (CREATED) y el cuerpo de la respuesta contiene los datos del médico registrado.
          */
-        URI url = uriComponentsBuilder.path("{id}").buildAndExpand(usuario.getId()).toUri();
+        URI url = uriComponentsBuilder.path("/{id}").buildAndExpand(usuario.getId()).toUri();
         return ResponseEntity.created(url).body(datosRespuestaUsuario);
         // Return 201 Created
         // URL donde encontrar al medico
@@ -113,7 +113,8 @@ public class RegistroUsuarioController {
                         usuarioDireccion.getCiudad(),
                         usuarioDireccion.getEstado(),
                         usuarioDireccion.getPais(),
-                        usuarioDireccion.getComplemento()
+                        usuarioDireccion.getComplemento(),
+                        usuarioDireccion.getNombre_usuario()
                 )
         );
 
@@ -147,13 +148,12 @@ public class RegistroUsuarioController {
          */
         DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(
                 new RegistroDatosBancarios(
-                        usuarioDatosBancarios.getNombre(),
+                        usuarioDatosBancarios.getNombre_usuario(),
                         usuarioDatosBancarios.getBanco(),
                         usuarioDatosBancarios.getTipoDeCuenta(),
                         usuarioDatosBancarios.getNumeroDeTarjeta(),
                         usuarioDatosBancarios.getFechaDeExpiracion(),
                         usuarioDatosBancarios.getCvv()
-
 
                 )
         );

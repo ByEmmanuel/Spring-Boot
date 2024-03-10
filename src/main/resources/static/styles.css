@@ -100,18 +100,18 @@ body {
     background-color: #f0f0f0;
 }
 
-.form-registro{
-    width: 100%;
-    display: flex;
+.form-registro {
+    position: relative;
+    left: 30%;
+    width: 30%;
+    /* display: flex; */
     justify-content: center;
     Align-items: center;
-
     flex-direction: column;
     gap: 20px;
     padding: 20px;
-    transition: transform 0.4s ease; /* Agregamos una transición para suavizar el desplazamiento */
+    transition: transform 0.4s ease;
 }
-
 
 
 .form-registro.left {
@@ -138,11 +138,49 @@ body {
     display: block;
 }
 
-.input , .input-direccion{
+.label-formRegistro{
     position: relative;
-    top: 1em;
-    right: 4em;
-    height: 100%;
+    font-size: 2em;
+    color: #04417c;
+
+}
+
+.label-formRegistro-InfBancario{
+    position: relative;
+    font-size: 21px;
+    color: #052f56;
+
+}
+
+
+.input {
+    position: relative;
+    justify-content: center;
+    Align-items: center;
+    flex-direction: column;
+    right: 9em;
+
+
+    width: 200%;
+
+    border-color: transparent transparent #156baa transparent;
+
+    border-width: 5px;
+    font-size: 16px;
+    padding: 1em 2em;
+    margin: 2em;
+    outline: none;
+    background: white;
+    z-index: 1;
+}
+
+.input-direccion, .input-InfBancaria{
+    position: relative;
+    justify-content: center;
+    Align-items: center;
+    flex-direction: column;
+    right: 3.5em;
+
     width: 100%;
 
     border-color: transparent transparent #156baa transparent;
@@ -165,7 +203,7 @@ body {
 .Boton-Continuar{
     position: relative;
     top: 1em;
-    right: 4em;
+
     background-color: #156baa;
     color: white;
     border: none;

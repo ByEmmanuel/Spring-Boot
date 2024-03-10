@@ -12,8 +12,7 @@ import java.util.List;
 
 
 @Table(name = "usuarios")
-@Entity(name = "Usuario")
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor

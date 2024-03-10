@@ -7,7 +7,7 @@ public record RegistroDatosBancarios(
 
         @NotBlank
         @NotNull
-        String nombre,
+        String nombre_usuario,
         @NotBlank
         @NotNull
         String banco,

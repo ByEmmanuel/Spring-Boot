@@ -1,34 +1,34 @@
 package com.beta.authenticationsystem.Models.DatosBancarios;
 
-import com.beta.authenticationsystem.Models.direccion.RegistroDatosDireccion;
 import com.beta.authenticationsystem.Models.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
 
 
+@Entity
 @Table(name = "datos_bancarios")
-@Entity(name = "Bancario")
-
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "nombre")
-public class Bancario extends Usuario{
-
-
+public class Bancario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(updatable = false, insertable = false)
     public Long id;
 
-    @JoinColumn(name = "id_usuario")
     @ManyToOne
+    @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
-    private String nombre;
+    @Column(name = "activo")
+    private boolean activo;
+
+
+    private String nombre_usuario;
     private String banco;
     private String tipoDeCuenta;
     private String numeroDeTarjeta;
@@ -37,17 +37,18 @@ public class Bancario extends Usuario{
 
 
     public Bancario(RegistroDatosBancarios bancarios) {
-        this.nombre = bancarios.nombre();
+        this.nombre_usuario = bancarios.nombre_usuario();
         this.banco = bancarios.banco();
         this.tipoDeCuenta = bancarios.tipoDeCuenta();
         this.numeroDeTarjeta = bancarios.numeroDeTarjeta();
         this.fechaDeExpiracion = bancarios.fechaDeExpiracion();
         this.cvv = bancarios.cvv();
+        this.activo = true;
     }
 
     public Bancario actualizarDatos(RegistroDatosBancarios bancarios) {
 
-        this.nombre = bancarios.nombre();
+        this.nombre_usuario = bancarios.nombre_usuario();
         this.banco = bancarios.banco();
         this.tipoDeCuenta = bancarios.tipoDeCuenta();
         this.numeroDeTarjeta = bancarios.numeroDeTarjeta();

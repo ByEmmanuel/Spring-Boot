@@ -6,15 +6,12 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Table(name = "datos_Direccion")
-@Entity(name = "Direccion")
-
-
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-
-public class Direccion extends Usuario {
+public class Direccion  {
 
 
     @Id
@@ -22,10 +19,15 @@ public class Direccion extends Usuario {
     @Column(updatable = false, insertable = false)
     public Long id;
 
-    @JoinColumn(name = "id_cliente")  // Cambiado de "usuario" a "usuario_id"
     @OneToOne
+    @JoinColumn(name = "id_cliente")  // Cambiado de "usuario" a "usuario_id"
     private Usuario usuario;
 
+    @Column(name = "activo")
+    private boolean activo;
+
+
+    private String nombre_usuario;
     private String calle;
     private String numero;
     private String colonia;
@@ -35,6 +37,7 @@ public class Direccion extends Usuario {
     private String complemento;
 
     public Direccion(RegistroDatosDireccion direccion) {
+        this.nombre_usuario = direccion.nombre_usuario();
         this.calle = direccion.calle();
         this.numero = direccion.numero();
         this.colonia = direccion.colonia();

@@ -59,7 +59,7 @@
                     <div class="form-registro"  id="myForm">
 
                         <br>
-                        <label for="Nombre" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Nombre(s)</label>
+                        <label for="Nombre"  class="label-formRegistro">Nombre(s)</label>
                         <input type="text" id="Nombre" name="Nombre" required class="input">
                         <br>
                         <button type="submit" id="Siguiente-boton" class="Boton-Continuar">Continuar</button>
@@ -68,61 +68,162 @@
 
                     <div class="form-registro hidden" id="apellidoSection">
                         <br>
-                        <label for="Apellido" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Apellido(s)</label>
+                        <label for="Apellido"  class="label-formRegistro">Apellido(s)</label>
                         <input type="text" id="Apellido" name="Apellido" required class="input">
+
                         <br>
                         <button type="button" id="Siguiente-boton2" class="Boton-Continuar">Continuar</button>
                     </div>
 
-                    <div class="form-registro hidden" id="emailSection">
+                    <div class="form-registro hidden" id="especialidadSection">
                         <br>
-                        <label for="Email" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Email</label>
-                        <input type="text" id="Email" name="Email" required class="input">
+                        <label for="Especialidad"  class="label-formRegistro">Especialidad</label>
+                        <select id="Especialidad" name="Especialidad" required class="input">
+                            <option value="" disabled selected>Selecciona Tu Especialidad</option>
+                            <option value="Ingeniero_Sistemas">Ingeniero en Sistemas</option>
+                            <option value="Ingeniero_Industrial">Ingeniero Industrial</option>
+                            <option value="Ingeniero_Agronomo">Ingeniero Agrónomo</option>
+                            <option value="Ingeniero_Ambiental">Ingeniero Ambiental</option>
+                            <option value="Ingeniero_Civil">Ingeniero Civil</option>
+                            <option value="Ingeniero_Mecanico">Ingeniero Mecánico</option>
+                            <option value="Ingeniero_Electrico">Ingeniero Eléctrico</option>
+                            <option value="Ingeniero_Quimico">Ingeniero Químico</option>
+                            <option value="Medicina_General">Médico General</option>
+                            <option value="Cirujano">Cirujano</option>
+                            <option value="Pediatra">Pediatra</option>
+                            <option value="Ginecologo">Ginecólogo</option>
+                            <option value="Medico">Médico</option>
+                        </select>
+
+
                         <br>
                         <button type="button" id="Siguiente-boton3" class="Boton-Continuar">Continuar</button>
                     </div>
 
-                    <div class="form-registro hidden" id="passwordSection">
+
+                    <div class="form-registro hidden" id="emailSection">
                         <br>
-                        <label for="password" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Contraseña</label>
-                        <input type="text" id="password" name="password" required class="input">
+                        <label for="Email" class="label-formRegistro">Email</label>
+                        <input type="text" id="Email" name="Email" required class="input">
                         <br>
                         <button type="button" id="Siguiente-boton4" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="telefonoSection">
+                        <br>
+                        <label for="Telefono" class="label-formRegistro">Telefono</label>
+                        <input type="text" id="Telefono" name="Telefono" required class="input">
+                        <br>
+                        <button type="button" id="Siguiente-boton5" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="passwordSection">
+                        <br>
+                        <label for="password" class="label-formRegistro">Contraseña</label>
+                        <input type="text" id="password" name="password" required class="input">
+                        <br>
+                        <button type="button" id="Siguiente-boton6" class="Boton-Continuar">Continuar</button>
                     </div>
 
                     <div class="form-registro hidden" id="direccionSection1">
                         <!-- Calle -->
                         <br>
-                        <label for="calle" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label">Ingrese su direccion</label>
+                        <label for="calle" class="label-formRegistro">Ingrese su direccion</label>
                         <input type="text" id="calle" name="calle" required class="input-direccion" placeholder="Calle">
                         <!-- Numero -->
-                        <label for="numero" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label"></label>
+                        <label for="numero" class="label-formRegistro"></label>
                         <input type="text" id="numero" name="numero" required class="input-direccion"  placeholder="Numero Ext / int">
                         <!-- Colonia -->
-                        <label for="colonia" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label"></label>
+                        <label for="colonia" class="label-formRegistro"></label>
                         <input type="text" id="colonia" name="colonia" required class="input-direccion"  placeholder="Colonia">
 
-                        <button type="button" id="Siguiente-boton5" class="Boton-Continuar">Continuar</button>
+                        <button type="button" id="Siguiente-boton7" class="Boton-Continuar">Continuar</button>
                     </div>
                     <div class="form-registro hidden" id="direccionSection2">
                         <!-- Ciudad -->
-                        <label for="ciudad" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label"></label>
+                        <label for="ciudad" class="label-formRegistro"></label>
                         <input type="text" id="ciudad" name="ciudad" required class="input-direccion"  placeholder="Ciudad / Municipio">
                         <!-- Estado -->
-                        <label for="estado" style="font-size: 2em; color: #04417c; position: relative; right: 25%" class="label"></label>
+                        <label for="estado" class="label-formRegistro"></label>
                         <input type="text" id="estado" name="estado" required class="input-direccion"  placeholder="Estado">
-                        <!-- Codigo Postal -->
+                        <!-- Pais   -->
 
-                        <button type="button" id="Siguiente-boton6" class="Boton-Continuar">Continuar</button>
+                        <!-- la funcion seleccionarPais() no esta en uso y en el navegador me saldra un error -->
+                        <select id="pais" onchange="seleccionarPais()"
+                                name="pais" required class="input-direccion"  placeholder="Pais">
+                            <option value="" disabled selected>Selecciona un país</option>
+                            <option value="Estados Unidos">Estados Unidos</option>
+                            <option value="China">China</option>
+                            <option value="India">India</option>
+                            <option value="Japón">Japón</option>
+                            <option value="Alemania">Alemania</option>
+                            <option value="Reino Unido">Reino Unido</option>
+                            <option value="Francia">Francia</option>
+                            <option value="Italia">Italia</option>
+                            <option value="Brasil">Brasil</option>
+                            <option value="Canadá">Canadá</option>
+                            <option value="Rusia">Rusia</option>
+                            <option value="Australia">Australia</option>
+                            <option value="España">España</option>
+                            <option value="México">México</option>
+                            <option value="Corea del Sur">Corea del Sur</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Turquía">Turquía</option>
+                            <option value="Países Bajos">Países Bajos</option>
+                            <option value="Arabia Saudita">Arabia Saudita</option>
+                            <option value="Suiza">Suiza</option>
+                            <option value="Argentina">Argentina</option>
+                            <option value="Suecia">Suecia</option>
+                            <option value="Polonia">Polonia</option>
+                            <option value="Bélgica">Bélgica</option>
+                            <option value="Austria">Austria</option>
+                            <option value="Noruega">Noruega</option>
+                            <option value="Emiratos Árabes Unidos">Emiratos Árabes Unidos</option>
+                            <option value="Singapur">Singapur</option>
+                            <option value="Malasia">Malasia</option>
+                        </select>
+                        <!-- Codigo Postal -->
+                        <label for="codigoPostal" class="label-formRegistro"></label>
+                        <input type="text" id="codigoPostal" name="codigoPostal" required class="input-direccion"  placeholder="Codigo Postal">
+
+
+                        <button type="button" id="Siguiente-boton8" class="Boton-Continuar">Continuar</button>
+                    </div>
+
+                    <div class="form-registro hidden" id="datosBancariosSection">
+
+                        <!-- Banco -->
+                        <label for="banco" class="label-formRegistro-InfBancario">Solo un paso más...</label>
+                        <input type="text" id="banco" name="banco" required class="input-InfBancaria" placeholder="Banco">
+                        <!-- Numero De Tarjeta -->
+                        <label for="numerodetarjeta" class="label-formRegistro-InfBancario">Numero de tarjeta</label>
+                        <input type="text" id="numerodetarjeta" name="numerodetarjeta" required class="input-InfBancaria"  placeholder="Numero de Tarjeta">
+                        <!-- Fecha De Expiracion -->
+                        <label for="fechaDeExpiracion" class="label-formRegistro-InfBancario">Fecha de expiracion</label>
+                        <input type="text" id="fechaDeExpiracion" name="fechaDeExpiracion" required class="input-InfBancaria"  placeholder="fecha De Expiracion">
+                        <!-- Codigo De Seguridad (CVV)-->
+                        <label for="cvv" class="label-formRegistro-InfBancario">Codigo de seguridad (CVV)</label>
+                        <input type="text" id="cvv" name="codigoDeSeguridad" required class="input-InfBancaria"  placeholder="Codigo De Seguridad (CVV)">
+                        <!-- Tipo De Cuenta -->
+                        <label for="tipoDeCuenta" class="label-formRegistro-InfBancario">Tipo de cuenta</label>
+                        <select id="tipoDeCuenta" name="tipoDeCuenta" required class="input-InfBancaria">
+                            <option value="" disabled selected>Selecciona un tipo de cuenta</option>
+                            <option value="Tarjeta De Debito">Tarjeta De Debito</option>
+                            <option value="Tarjeta De Credito">Tarjeta De Credito</option>
+                        </select>
+
+
+
+
+                        <button type="button" id="Siguiente-boton9" class="Boton-Continuar" onclick="realizarSolicitudes()">Registrar</button>
                     </div>
 
 
-
-                </form>
-                <div class="additional-component hidden" id="additionalComponent">
-                    <!-- Componente adicional estilo Microsoft -->
-                    <p>¡Formulario enviado con éxito!</p>
-                </div>
+                    </form>
+                    <div class="additional-component hidden" id="additionalComponent">
+                        <!-- Componente adicional estilo Microsoft -->
+                        <p>¡Formulario enviado con éxito!</p>
+                    </div>
             </div>
         </nav>
 

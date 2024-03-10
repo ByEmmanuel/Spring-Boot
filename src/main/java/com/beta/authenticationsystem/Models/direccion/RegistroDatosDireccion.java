@@ -1,8 +1,12 @@
 package com.beta.authenticationsystem.Models.direccion;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record RegistroDatosDireccion(
+        @NotBlank
+        @NotNull
+        String nombre_usuario,
         @NotBlank
         String calle,
         @NotBlank
@@ -16,7 +20,6 @@ public record RegistroDatosDireccion(
         @NotBlank
         String pais,
 
-        @NotBlank
         String complemento) {
 }
 
