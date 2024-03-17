@@ -1,4 +1,4 @@
-package com.beta.authenticationsystem.Models.usuario;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario;
 
 public record ListadoDatosPersonalesUsuario(Long id, String nombre, String apellido, String email, String telefono, Especialidad especialidad
         //                                            ,String calle, String numero, String colonia, String ciudad, String estado, String pais, String complemento

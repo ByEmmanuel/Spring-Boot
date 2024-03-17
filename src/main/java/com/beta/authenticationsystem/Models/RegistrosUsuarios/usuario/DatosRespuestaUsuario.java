@@ -1,9 +1,9 @@
-package com.beta.authenticationsystem.Models.usuario;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario;
 
-import com.beta.authenticationsystem.Models.DatosBancarios.RegistroDatosBancarios;
-import com.beta.authenticationsystem.Models.direccion.RegistroDatosDireccion;
+import com.beta.authenticationsystem.Models.RegistrosUsuarios.DatosBancarios.RegistroDatosBancarios;
+import com.beta.authenticationsystem.Models.RegistrosUsuarios.direccion.RegistroDatosDireccion;
 
-public record DatosRespuestaUsuario(Long id, String nombre, String Apellido,String email, String telefono, String especialidad,
+public record DatosRespuestaUsuario(Long id, String nombre, String Apellido, String email, String telefono, String especialidad,
                                     RegistroDatosDireccion direccion, RegistroDatosBancarios datosBancarios) {
     public DatosRespuestaUsuario (Long id, String nombre, String Apellido,String email, String telefono, String especialidad){
         this(id,nombre,Apellido,email,telefono,especialidad,null,null);

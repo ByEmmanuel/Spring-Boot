@@ -1,4 +1,4 @@
-package com.beta.authenticationsystem.Models.usuario;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario;
 
 public enum Especialidad {
 

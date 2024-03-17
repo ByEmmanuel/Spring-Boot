@@ -1,4 +1,4 @@
-package com.beta.authenticationsystem.Models.DatosBancarios;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.DatosBancarios;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

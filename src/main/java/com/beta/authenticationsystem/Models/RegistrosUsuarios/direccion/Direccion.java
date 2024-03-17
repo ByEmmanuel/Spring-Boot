@@ -1,7 +1,7 @@
-package com.beta.authenticationsystem.Models.direccion;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.direccion;
 
 
-import com.beta.authenticationsystem.Models.usuario.Usuario;
+import com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,9 +19,11 @@ public class Direccion  {
     @Column(updatable = false, insertable = false)
     public Long id;
 
+    private Long id_usuario;
+
     @OneToOne
-    @JoinColumn(name = "id_cliente")  // Cambiado de "usuario" a "usuario_id"
-    private Usuario usuario;
+    @JoinColumn(name = "usuario_id")  // Cambiado de "usuario" a "usuario_id"
+    private Usuario usuario_id;
 
     @Column(name = "activo")
     private boolean activo;
@@ -45,6 +47,8 @@ public class Direccion  {
         this.estado = direccion.estado();
         this.pais = direccion.pais();
         this.complemento = direccion.complemento();
+        this.id_usuario = usuario_id.getId();
+
     }
 
     public Direccion actualizarDatos(RegistroDatosDireccion direccion) {
@@ -59,12 +63,5 @@ public class Direccion  {
         return this;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
 

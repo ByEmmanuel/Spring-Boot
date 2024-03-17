@@ -1,6 +1,6 @@
-package com.beta.authenticationsystem.Models.DatosBancarios;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.DatosBancarios;
 
-import com.beta.authenticationsystem.Models.usuario.Usuario;
+import com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario.Usuario;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,7 +12,7 @@ import lombok.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(of = "nombre")
+@EqualsAndHashCode()
 public class Bancario {
 
     @Id
@@ -20,8 +20,8 @@ public class Bancario {
     @Column(updatable = false, insertable = false)
     public Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "id_usuario")
+    @OneToOne
+    @JoinColumn(name = "cuentas")
     private Usuario usuario;
 
     @Column(name = "activo")
@@ -58,13 +58,6 @@ public class Bancario {
         return this;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }
 
 

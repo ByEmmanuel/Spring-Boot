@@ -1,4 +1,4 @@
-package com.beta.authenticationsystem.Models.direccion;
+package com.beta.authenticationsystem.Models.RegistrosUsuarios.direccion;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

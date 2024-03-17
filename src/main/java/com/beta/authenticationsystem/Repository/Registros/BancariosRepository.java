@@ -1,7 +1,6 @@
-package com.beta.authenticationsystem.Repository;
+package com.beta.authenticationsystem.Repository.Registros;
 
-import com.beta.authenticationsystem.Models.DatosBancarios.Bancario;
-import com.beta.authenticationsystem.Models.usuario.Usuario;
+import com.beta.authenticationsystem.Models.RegistrosUsuarios.DatosBancarios.Bancario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
