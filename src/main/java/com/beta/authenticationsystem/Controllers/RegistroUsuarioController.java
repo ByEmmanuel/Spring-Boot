@@ -9,8 +9,8 @@ import com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario.ListadoDat
 import com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario.RegistroDatosPersonalesUsuario;
 import com.beta.authenticationsystem.Models.RegistrosUsuarios.usuario.Usuario;
 
-import com.beta.authenticationsystem.Repository.Registros.BancariosRepository;
-import com.beta.authenticationsystem.Repository.Registros.DireccionRepository;
+
+
 import com.beta.authenticationsystem.Repository.Registros.UsuarioRepository;
 
 import jakarta.validation.Valid;
@@ -75,8 +75,8 @@ public class RegistroUsuarioController {
              * DatosRespuestaMedico es una clase que encapsula la información que deseas devolver como respuesta a la solicitud POST.
              */
 
-            DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario.getId(),usuario.getNombre(), usuario.getApellido(),usuario.getEmail(),
-                    usuario.getTelefono(),usuario.getEspecialidad().toString()
+            DatosRespuestaUsuario datosRespuestaUsuario = new DatosRespuestaUsuario(usuario.getId(), usuario.getNombre(), usuario.getApellido(), usuario.getEmail(),
+                    usuario.getTelefono(), usuario.getEspecialidad().toString()
 
 //                new DatosDireccion(usuario.getDireccion().getCalle(),usuario.getDireccion().getNumero(),
 //                        usuario.getDireccion().getColonia(),usuario.getDireccion().getCiudad(),
@@ -107,7 +107,6 @@ public class RegistroUsuarioController {
     }
 
 
-
 //
 //    @PostMapping
 //    public void registrarUsuario(@RequestBody @Valid DatosRegistroUsuario datosRegistroUsuario) {
@@ -121,7 +120,7 @@ public class RegistroUsuarioController {
 //    }
 
     @GetMapping
-    public ResponseEntity<Page<ListadoDatosPersonalesUsuario>> listadoUsuarios(@PageableDefault(size = 2) Pageable paginacion){
+    public ResponseEntity<Page<ListadoDatosPersonalesUsuario>> listadoUsuarios(@PageableDefault(size = 2) Pageable paginacion) {
         // return medicoRepository.findAll(paginacion).map(DatosListadoMedico::new);
         return ResponseEntity.ok(usuarioRepository.findByActivoTrue(paginacion).map(ListadoDatosPersonalesUsuario::new));
     }

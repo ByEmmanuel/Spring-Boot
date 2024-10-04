@@ -39,7 +39,6 @@ public class Direccion  {
     private String complemento;
 
     public Direccion(RegistroDatosDireccion direccion) {
-        this.nombre_usuario = direccion.nombre_usuario();
         this.calle = direccion.calle();
         this.numero = direccion.numero();
         this.colonia = direccion.colonia();

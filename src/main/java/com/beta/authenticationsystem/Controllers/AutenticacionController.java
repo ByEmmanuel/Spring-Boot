@@ -15,10 +15,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/login")
@@ -33,23 +30,6 @@ public class AutenticacionController {
 
     @Autowired
     private TokenService tokenService;
-
-
-
-
-//    @PostMapping
-//    public ResponseEntity<DatosJWToken> autenticarUsuario(@RequestBody @Valid Usuario userDetails) {
-//        Authentication authToken = new UsernamePasswordAuthenticationToken(userDetails.getEmail(), userDetails.getContraseña());
-//        Authentication authentication = authenticationManager.authenticate(authToken);
-//
-//        //Esto no esta imprimiendo nada
-//        System.out.println("Autenticado: " + authentication);
-//
-//        Usuario usuario = obtenerUsuarioDesdeAutenticacion(authentication);
-//        String JWToken = tokenService.generarToken(usuario);
-//        return ResponseEntity.ok(new DatosJWToken(JWToken));
-//    }
-
 
     @PostMapping
     public ResponseEntity<DatosJWToken> autenticarUsuarion(@RequestBody @Valid DatosAutenticacionUsuario datosAutenticacionUsuario) {
